@@ -1,46 +1,42 @@
--- Creación de la base de datos
-CREATE DATABASE colegio;
-USE colegio;
+-- Crear la base de datos con especificación de codificación
+CREATE DATABASE gestion_academica CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
--- Tabla de Asignaturas
+USE gestion_academica;
+
+-- Tabla de asignaturas
 CREATE TABLE asignaturas (
     id_asignatura INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
-    descripcion TEXT,
-    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    descripcion TEXT
 );
 
--- Tabla de Resultados de Aprendizaje (RA)
+-- Tabla de resultados de aprendizaje (RA)
 CREATE TABLE resultados_aprendizaje (
-    id_ra INT AUTO_INCREMENT PRIMARY KEY,
+    id_resultado_aprendizaje INT AUTO_INCREMENT PRIMARY KEY,
     id_asignatura INT NOT NULL,
-    descripcion TEXT NOT NULL,
-    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    descripcion TEXT,
     FOREIGN KEY (id_asignatura) REFERENCES asignaturas(id_asignatura) ON DELETE CASCADE
 );
 
--- Tabla de Criterios de Evaluación
+-- Tabla de criterios de evaluación
 CREATE TABLE criterios_evaluacion (
     id_criterio INT AUTO_INCREMENT PRIMARY KEY,
-    id_ra INT NOT NULL,
-    descripcion TEXT NOT NULL,
-    peso FLOAT CHECK (peso >= 0 AND peso <= 100), -- Representa el porcentaje de este criterio
-    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_ra) REFERENCES resultados_aprendizaje(id_ra) ON DELETE CASCADE
+    id_resultado_aprendizaje INT NOT NULL,
+    descripcion TEXT,
+    FOREIGN KEY (id_resultado_aprendizaje) REFERENCES resultados_aprendizaje(id_resultado_aprendizaje) ON DELETE CASCADE
 );
 
--- Datos iniciales (opcional)
+-- Inserción de datos iniciales de prueba
 INSERT INTO asignaturas (nombre, descripcion) VALUES 
-('Matemáticas', 'Asignatura que cubre álgebra y geometría básica.'),
-('Historia', 'Estudio de eventos históricos y sus impactos en la sociedad.');
+('Matemáticas', 'Asignatura de cálculo y álgebra'),
+('Lengua Española', 'Asignatura de gramática y literatura');
 
 INSERT INTO resultados_aprendizaje (id_asignatura, descripcion) VALUES 
-(1, 'Comprender los fundamentos del álgebra lineal'),
-(1, 'Resolver ecuaciones cuadráticas'),
-(2, 'Entender las causas de la Revolución Francesa');
+(1, 'Resolver ecuaciones lineales'),
+(1, 'Aplicar derivadas en problemas de optimización'),
+(2, 'Redactar textos argumentativos');
 
-INSERT INTO criterios_evaluacion (id_ra, descripcion, peso) VALUES 
-(1, 'Resolver correctamente 3 ejercicios básicos', 40),
-(1, 'Explicar conceptos fundamentales del álgebra', 60),
-(2, 'Interpretar resultados y simplificar expresiones', 50),
-(3, 'Realizar un ensayo sobre la Revolución Francesa', 100);
+INSERT INTO criterios_evaluacion (id_resultado_aprendizaje, descripcion) VALUES 
+(1, 'Ecuaciones correctamente planteadas'),
+(2, 'Resolución de problemas sin errores algebraicos'),
+(3, 'Estructura coherente y argumentación sólida');
