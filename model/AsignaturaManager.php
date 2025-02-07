@@ -49,8 +49,32 @@ class AsignaturaController
             return $myAsignatura; //Return result even there's no data
         }
     }
+
+    public function listAll()
+    {
+
+        $asignaturaList = null;
+
+        try {
+            //Make a db connection
+            $this->db = Database::getConnetion();
+
+            $stmnt = 'SELECT id_asignatura, nombre, descripcion, from $this->table';
+
+            //Execute query and returning an associative array
+            $asignaturaList = $this->db->query($stmnt)->fetchAll(PDO::FETCH_ASSOC);
+
+            if (!empty($result)) {
+                
+            }
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }finally{
+            $this-> db = Database::closeConnection($this->db);
+            return $asignaturaList;
+        }
+    }
 }
-
-
 
 ?>
