@@ -4,7 +4,7 @@ class CriterioEvaluacion
 	private int $id_resultado_aprendizaje;
 	private string $nombre;
 	private string $codigo;
-	private $id_asignatura;
+	private int $id_asignatura;
 
 	public function __construct()
 	{

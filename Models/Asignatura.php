@@ -7,10 +7,10 @@
 class Asignatura
 {
 	private int $id_asignatura;
-	private string $nombre;
-	private ?int $equivalencia_ects = null;
-	private ?int $codigo = null;
-	private ?int $horas = null;
+	private string $nombre = "";
+	private int $equivalencia_ects = 0;
+	private int $codigo = 0;
+	private int $horas = 0;
 
 
 	//Constructor

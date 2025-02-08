@@ -3,7 +3,8 @@
  * Connection to the database using a PDO object. 
  * @author Juan <juanblancomoyano@gmail.com>
  */
-class database{
+class database
+{
     /**
      * Database url
      * @var string
@@ -30,7 +31,9 @@ class database{
      * Method that connects with the database using values from fields
      * @return PDO instance
      */
-    public static function getConnetion(){
+    public static function getConnection(): ?PDO
+    {
+        $pdo = null;
         try {
             //String connection
             $dsn = "mysql:host=" . self::$host . ";dbname=" . self::$dbname . ";charset=utf8mb4";
@@ -38,21 +41,13 @@ class database{
             //Creating an isntance of pdo
             $pdo = new PDO($dsn, self::$username, self::$password);
 
-            return $pdo;
-        } catch (PDOexception $e){
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        } catch (PDOexception $e) {
             echo "Conection error: " . $e->getMessage();
+        } finally {
+            return $pdo;
         }
     }
-
-    /**
-     * This method close the connection with de database 
-     * @param mixed $pdo connection
-     * @return null 
-     */
-    public static function closeConnection($pdo){
-        $pdo = null;
-        return $pdo;
-    }
-}   
+}
 ?>
-
