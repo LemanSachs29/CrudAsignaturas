@@ -1,5 +1,5 @@
 <?php
-class ResultadoApredizaje
+class ResultadoAprendizaje
 {
     private int $id_asignatura;
     private string $nombre;
@@ -46,12 +46,12 @@ class ResultadoApredizaje
         return $this->nombre;
     }
 
-    public function setNombre(int $nombre): void
+    public function setNombre(string $nombre): void
     {
         $this->nombre = $nombre;
     }
 
-    public function getCodigo($codigo): int
+    public function getCodigo(): int
     {
         return $this->codigo;
     }

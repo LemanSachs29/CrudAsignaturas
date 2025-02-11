@@ -109,7 +109,7 @@ class AsignaturaManager
      * @return array|null
      * @throws PDOException if there is an error executing the query
      */
-    public function readAll(): array
+    public function readAll(): ?array
     {
         $asignaturas = null;
         try {
@@ -209,18 +209,5 @@ class AsignaturaManager
     }
 
 }
-
-
-
-
-
-
-$campos = ["nombre" => "Sistemas informáticos", "horas" => "35", "equivalencia_ects" => "45"];
-
-$miAsignaturaController = new AsignaturaManager();
-
-$miAsignatura = $miAsignaturaController->delete(2);
-var_dump($miAsignatura);
-
 
 ?>
