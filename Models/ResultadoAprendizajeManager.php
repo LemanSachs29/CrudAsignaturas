@@ -3,7 +3,7 @@
 require_once 'Database.php';
 require_once 'ResultadoAprendizaje.php';
 
-class ResultadoEvaluacionManager
+class ResultadoAprendizajeManager
 {
     private PDO $db;
     private string $table = "resultados_aprendizaje";
