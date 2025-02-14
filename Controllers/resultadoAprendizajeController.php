@@ -1,5 +1,5 @@
 <?php
-require_once '../Models/ResultadoManager.php';
+require_once '../Models/ResultadoAprendizajeManager.php';
 
 $manager = new ResultadoAprendizajeManager();
 $action = $_GET['action'] ?? 'listarPorAsignatura';
@@ -14,7 +14,7 @@ switch ($action) {
         }
 
         $resultados = $manager->readBySubject($id_asignatura);
-        include '../Views/resultados_asignatura.php';
+        include '../View/ResultadosView.php';
         break;
 
     case 'agregar':
@@ -36,14 +36,60 @@ switch ($action) {
 
             $manager->create($resultado);
 
-            // Redirigir de nuevo a la lista de RA de la asignatura
-            header("Location: ../Controllers/ResultadoController.php?action=listarPorAsignatura&id_asignatura=$id_asignatura");
+            // Redirigir a la lista de RA de la asignatura
+            header("Location: ../Controllers/ResultadoAprendizajeController.php?action=listarPorAsignatura&id_asignatura=$id_asignatura&nombre_asignatura=" . urlencode($nombre_asignatura));
             exit;
         } else {
-            include '../Views/nuevo_resultado.php';
+            include '../View/nuevo_resultado.php';
         }
         break;
 
+    case 'editar':
+        // Editar un Resultado de Aprendizaje
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'] ?? null;
+            $id_asignatura = $_POST['id_asignatura'] ?? null;
+            $nombre = htmlspecialchars(trim($_POST['nombre']));
+            $codigo = (int) $_POST['codigo'];
+
+            if (!$id || !$id_asignatura) {
+                die("Error: Datos inválidos.");
+            }
+
+            $fields = ['nombre' => $nombre, 'codigo' => $codigo];
+            $manager->update($id, $fields);
+
+            // Redirigir a la lista de RA de la asignatura
+            header("Location: ../Controllers/ResultadoAprendizajeController.php?action=listarPorAsignatura&id_asignatura=$id_asignatura&nombre_asignatura=" . urlencode($nombre_asignatura));
+            exit;
+        } else {
+            $id = $_GET['id'] ?? null;
+            $id_asignatura = $_GET['id_asignatura'] ?? null;
+
+            if (!$id || !$id_asignatura) {
+                die("Error: ID no válido.");
+            }
+
+            $resultado = $manager->read($id);
+            include '../View/editar_resultado.php';
+        }
+        break;
+
+    case 'eliminar':
+        // Eliminar un Resultado de Aprendizaje
+        $id = $_GET['id'] ?? null;
+        $id_asignatura = $_GET['id_asignatura'] ?? null;
+
+        if (!$id || !$id_asignatura) {
+            die("Error: Datos inválidos.");
+        }
+
+        $manager->delete($id);
+
+        // Redirigir a la lista de RA de la asignatura
+        header("Location: ../Controllers/ResultadoAprendizajeController.php?action=listarPorAsignatura&id_asignatura=$id_asignatura&nombre_asignatura=" . urlencode($nombre_asignatura));
+        exit;
+    
     default:
         echo "Acción no válida.";
         break;

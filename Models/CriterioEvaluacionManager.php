@@ -3,7 +3,7 @@
 require_once 'Database.php';
 require_once 'CriterioEvaluacion.php';
 
-class ResultadoEvaluacionManager
+class CriterioEvaluacionManager
 {
     private PDO $db;
     private string $table = "criterios_evaluacion";
@@ -106,7 +106,7 @@ class ResultadoEvaluacionManager
             orden
                     FROM {$this->table} 
                     WHERE 
-                    id_resultado_aprendizaje = :id_resultado_aprendizaje";
+                    id_resultado_aprendizaje = :id_resultado_aprendizaje ORDER BY orden";
 
             $statement = $this->db->prepare($query);
 
@@ -165,7 +165,7 @@ class ResultadoEvaluacionManager
             $query = "DELETE FROM {$this->table} WHERE id_criterio = :id_criterio";
 
             $statement = $this->db->prepare($query);
-            $result = $statement->execute([":id" => $id_criterio]);
+            $result = $statement->execute([":id_criterio" => $id_criterio]);
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         } finally {
@@ -174,5 +174,4 @@ class ResultadoEvaluacionManager
     }
 
 }
-
 ?>

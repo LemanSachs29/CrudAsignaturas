@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Asignatura</title>
+    <title>Editar Criterio de Evaluación</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
@@ -22,6 +22,9 @@
         h2 {
             color: #d9534f; /* Color retro para el título */
             font-weight: bold;
+        }
+        .text-primary {
+            color: #5bc0de !important; /* Color retro para el texto resaltado */
         }
         .form-label {
             color: #5bc0de; /* Color retro para las etiquetas */
@@ -58,34 +61,29 @@
 
 <body>
     <div class="container mt-5">
-        <h2>Editar Asignatura</h2>
-        <form action="../Controllers/AsignaturaController.php?action=editar" method="POST">
+        <h2 class="mb-4">Editar Criterio de Evaluación - <span class="text-primary"><?= htmlspecialchars($_GET['nombre_ra']) ?></span></h2>
 
-            <input type="hidden" name="id" value="<?= $asignatura->getIdAsignatura() ?>">
+        <form action="../Controllers/CriterioEvaluacionController.php?action=editar&id=<?= $criterio->getId_criterio() ?>&id_resultado_aprendizaje=<?= $_GET['id_resultado_aprendizaje'] ?>&nombre_ra=<?= urlencode($_GET['nombre_ra']) ?>" method="POST">
             
-            <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre de la asignatura</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="equivalencia_ects" class="form-label">Equivalencia ECTS</label>
-                <input type="number" class="form-control" id="equivalencia_ects" name="equivalenciaECTS" min="0">
-            </div>
-
-            <div class="mb-3">
-                <label for="codigo" class="form-label">Código</label>
-                <input type="text" class="form-control" id="codigo" name="codigo">
-            </div>
-
-            <div class="mb-3">
-                <label for="horas" class="form-label">Horas</label>
-                <input type="number" class="form-control" id="horas" name="horas" min="1">
-            </div>
-
-            <button type="submit" class="btn btn-success">Guardar</button>
-            <a href="../Controllers/AsignaturaController.php?action=listar" class="btn btn-secondary">Cancelar</a>
+            <!-- 🔥 Input oculto para mantener el ID del Criterio -->
+            <input type="hidden" name="id" value="<?= $criterio->getId_criterio() ?>">
             
+            <!-- 🔥 Input oculto para mantener el ID del Resultado de Aprendizaje -->
+            <input type="hidden" name="id_resultado_aprendizaje" value="<?= $_GET['id_resultado_aprendizaje'] ?>">
+
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción del Criterio de Evaluación</label>
+                <input type="text" class="form-control" id="descripcion" name="descripcion" value="<?= htmlspecialchars($criterio->getDescripcion()) ?>" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="orden" class="form-label">Código</label>
+                <input type="number" class="form-control" id="orden" name="orden" value="<?= $criterio->getOrden() ?>" min="1" required>
+            </div>
+
+            <button type="submit" class="btn btn-success">Guardar Cambios</button>
+            <a href="../Controllers/CriterioEvaluacionController.php?action=listarPorResultado&id_resultado_aprendizaje=<?= $_GET['id_resultado_aprendizaje'] ?>&nombre_ra=<?= urlencode($_GET['nombre_ra']) ?>" 
+               class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </body>

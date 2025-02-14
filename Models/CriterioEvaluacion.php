@@ -30,7 +30,7 @@ class CriterioEvaluacion
 
 	public function setId_resultado_aprendizaje(int $id_resultado_aprendizaje): void
 	{
-		$this->id_criterio = $id_resultado_aprendizaje;
+		$this->id_resultado_aprendizaje = $id_resultado_aprendizaje;
 	}
 
 	public function setDescripcion(string $descripcion): void
