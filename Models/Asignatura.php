@@ -12,13 +12,10 @@ class Asignatura
 	private int $codigo = 0;
 	private int $horas = 0;
 
-
 	//Constructor
 	public function __construct()
 	{
 	}
-
-
 	/**
 	 * Allows dynamic property assignment while preserving encapsulation
 	 * 
@@ -39,53 +36,42 @@ class Asignatura
 		}
 	}
 
-	
-
 	public function getIdAsignatura(): int
 	{
 		return $this->id_asignatura;
 	}
-
 	public function setIdAsignatura(int $id_asignatura): void
 	{
 		$this->id_asignatura = $id_asignatura;
 	}
-
 	public function getNombre(): string
 	{
 		return $this->nombre;
 	}
-
 	public function setNombre(string $nombre): void
 	{
 		$this->nombre = $nombre;
 	}
-
 	public function getEquivalenciaEcts(): ?int
 	{
 		return $this->equivalencia_ects;
 	}
-
 	public function setEquivalenciaEcts(?int $equivalencia_ects): void
 	{
 		$this->equivalencia_ects = $equivalencia_ects;
 	}
-
 	public function getCodigo(): ?int
 	{
 		return $this->codigo;
 	}
-
 	public function setCodigo(?int $codigo): void
 	{
 		$this->codigo = $codigo;
 	}
-
 	public function getHoras(): ?int
 	{
 		return $this->horas;
 	}
-
 	public function setHoras(?int $horas): void
 	{
 		$this->horas = $horas;
