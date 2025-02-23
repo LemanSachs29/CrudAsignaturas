@@ -6,35 +6,35 @@ Este proyecto consiste en una aplicación web para la gestión de asignaturas, s
 
 📂 Estructura del Proyecto
 
-/CrudAsignaturas
-│── /Controllers
-│    ├── AsignaturaController.php
-│    ├── ResultadoAprendizajeController.php
-│    ├── CriterioEvaluacionController.php
-│── /Models
-│    ├── Database.php
-│    ├── Asignatura.php
-│    ├── AsignaturaManager.php
-│    ├── ResultadoAprendizaje.php
-│    ├── ResultadoAprendizajeManager.php
-│    ├── CriterioEvaluacion.php
-│    ├── CriterioEvaluacionManager.php
-│── /View
-│    ├── asignaturasView.php
-│    ├── nuevo_asignatura.php
-│    ├── editar_asignatura.php
-│    ├── resultadosView.php
-│    ├── nuevo_resultado.php
-│    ├── editar_resultado.php
-│    ├── criteriosView.php
-│    ├── nuevo_criterio.php
-│    ├── editar_criterio.php
-│── /SQL
-│    ├── gestion_academica.sql
-│── index.php
-│── .gitignore
-│── README.md
-
+/CrudAsignaturas\n
+│── /Controllers\n
+│    ├── AsignaturaController.php\n
+│    ├── ResultadoAprendizajeController.php\n
+│    ├── CriterioEvaluacionController.php\n
+│── /Models\n
+│    ├── Database.php\n
+│    ├── Asignatura.php\n
+│    ├── AsignaturaManager.php\n
+│    ├── ResultadoAprendizaje.php\n
+│    ├── ResultadoAprendizajeManager.php\n
+│    ├── CriterioEvaluacion.php\n
+│    ├── CriterioEvaluacionManager.php\n
+│── /View\n
+│    ├── asignaturasView.php\n
+│    ├── nuevo_asignatura.php\n
+│    ├── editar_asignatura.php\n
+│    ├── resultadosView.php\n
+│    ├── nuevo_resultado.php\n
+│    ├── editar_resultado.php\n
+│    ├── criteriosView.php\n
+│    ├── nuevo_criterio.php\n
+│    ├── editar_criterio.php\n
+│── /SQL\n
+│    ├── gestion_academica.sql\n
+│── index.php\n
+│── .gitignore\n
+│── README.md\n
+\n
 🛠️ Tecnologías Utilizadas
 
 PHP 8.x
