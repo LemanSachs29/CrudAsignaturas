@@ -4,37 +4,6 @@ CRUD de Asignaturas con Resultados de Aprendizaje y Criterios de Evaluación
 
 Este proyecto consiste en una aplicación web para la gestión de asignaturas, sus resultados de aprendizaje y los criterios de evaluación asociados. Está desarrollado en PHP puro, siguiendo la arquitectura Modelo-Vista-Controlador (MVC) y utilizando MySQL como base de datos. La interfaz está diseñada con Bootstrap.
 
-📂 Estructura del Proyecto
-
-/CrudAsignaturas\n
-│── /Controllers\n
-│    ├── AsignaturaController.php\n
-│    ├── ResultadoAprendizajeController.php\n
-│    ├── CriterioEvaluacionController.php\n
-│── /Models\n
-│    ├── Database.php\n
-│    ├── Asignatura.php\n
-│    ├── AsignaturaManager.php\n
-│    ├── ResultadoAprendizaje.php\n
-│    ├── ResultadoAprendizajeManager.php\n
-│    ├── CriterioEvaluacion.php\n
-│    ├── CriterioEvaluacionManager.php\n
-│── /View\n
-│    ├── asignaturasView.php\n
-│    ├── nuevo_asignatura.php\n
-│    ├── editar_asignatura.php\n
-│    ├── resultadosView.php\n
-│    ├── nuevo_resultado.php\n
-│    ├── editar_resultado.php\n
-│    ├── criteriosView.php\n
-│    ├── nuevo_criterio.php\n
-│    ├── editar_criterio.php\n
-│── /SQL\n
-│    ├── gestion_academica.sql\n
-│── index.php\n
-│── .gitignore\n
-│── README.md\n
-\n
 🛠️ Tecnologías Utilizadas
 
 PHP 8.x
@@ -68,14 +37,6 @@ XAMPP (para pruebas locales)
 ✔ Agregar nuevos criterios de evaluación.
 ✔ Edición y eliminación de criterios de evaluación.
 
-🔀 Navegación y Enrutamiento
-
-El enrutamiento se maneja mediante parámetros en la URL (GET), permitiendo acciones como:
-
-?action=listar
-?action=agregar
-?action=editar&id=1
-?action=eliminar&id=1
 
 Cada Controlador maneja las solicitudes y redirige a la Vista correspondiente, asegurando la correcta interacción con el Modelo.
 
