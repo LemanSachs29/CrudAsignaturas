@@ -38,6 +38,11 @@ switch ($action) {
 
             $manager->create($criterio);
 
+
+            $id_asignatura = $_GET['id_asignatura'] ?? $_POST['id_asignatura'] ?? null;
+            $nombre_asignatura = $_GET['nombre_asignatura'] ?? $_POST['nombre_asignatura'] ?? 'Sin Nombre';
+
+
             // Redirigir a la lista de Criterios de Evaluación del RA
             header("Location: ../Controllers/CriterioEvaluacionController.php?action=listarPorResultado&id_resultado_aprendizaje=$id_resultado_aprendizaje&nombre_ra=" . urlencode($nombre_ra) . "&id_asignatura=$id_asignatura&nombre_asignatura=" . urlencode($nombre_asignatura));
             exit;
@@ -94,11 +99,8 @@ switch ($action) {
         // Redirigir a la lista de Criterios de Evaluación del RA
         header("Location: ../Controllers/CriterioEvaluacionController.php?action=listarPorResultado&id_resultado_aprendizaje=$id_resultado_aprendizaje&nombre_ra=" . urlencode($nombre_ra) . "&id_asignatura=$id_asignatura&nombre_asignatura=" . urlencode($nombre_asignatura));
         exit;
-    
+
     default:
         echo "Acción no válida.";
         break;
 }
-
-
-?>

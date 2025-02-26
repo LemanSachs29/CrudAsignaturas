@@ -79,8 +79,9 @@
             </div>
 
             <button type="submit" class="btn btn-success">Guardar</button>
-            <a href="../Controllers/CriterioEvaluacionController.php?action=listarPorResultado&id_resultado_aprendizaje=<?= $_GET['id_resultado_aprendizaje'] ?>&nombre_ra=<?= urlencode($_GET['nombre_ra']) ?>" 
-               class="btn btn-secondary">Cancelar</a>
+            <a href="../Controllers/CriterioEvaluacionController.php?action=listarPorResultado&id_resultado_aprendizaje=<?= $_GET['id_resultado_aprendizaje'] ?>&nombre_ra=<?= urlencode($_GET['nombre_ra']) ?>&id_asignatura=<?= $_GET['id_asignatura'] ?>&nombre_asignatura=<?= urlencode($_GET['nombre_asignatura']) ?>" 
+   class="btn btn-secondary">Cancelar</a>
+
         </form>
     </div>
 </body>

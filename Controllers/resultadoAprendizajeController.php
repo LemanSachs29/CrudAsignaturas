@@ -36,6 +36,9 @@ switch ($action) {
 
             $manager->create($resultado);
 
+            $id_asignatura = $_GET['id_asignatura'] ?? $_POST['id_asignatura'] ?? null;
+            $nombre_asignatura = $_GET['nombre_asignatura'] ?? $_POST['nombre_asignatura'] ?? 'Sin Nombre';
+
             // Redirigir a la lista de RA de la asignatura
             header("Location: ../Controllers/ResultadoAprendizajeController.php?action=listarPorAsignatura&id_asignatura=$id_asignatura&nombre_asignatura=" . urlencode($nombre_asignatura));
             exit;
